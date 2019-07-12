@@ -1,0 +1,128 @@
+#1	If you echo a string in double quotes, it cannot include exclamation mark. You need to insert \ before it.
+#2	Use of printf: Format string should be double quotes. After format, give arguments with a space between.
+#3	Colorful text: echo -e "\e[1;{color code}m{text}\e[0m" Colors: black:30, red:31, green:32, yellow:33, blue:34, magenta:35, cyan:36, white:37
+#4	pgrep ${processName} gets PID for a process, always an integer
+#5	Environment variables for a process can be found at /proc/$(pgrep $(program name))/environ
+#6	Environment variables for a process can be found at /proc/$(pgrep $(program name))/environ | tr '\0' '\n' for human readable format
+#7	${#${varName}} gets length of a variable
+#8	echo $0 gets the current shell
+#9	Check $UID for current user number, 0 is the root user
+#10	Addition to $PATH or $LD_LIBRARY_PATH: export PATH = ${new path}:$PATH
+#11	For mathematical computations, you can use "let". It also includes, ++,--,+=,-=
+#12	echo "text">file overrides file; "text">>file appends to it, command<file file is read by command to be used
+#13	man: detailed info about a command. Ex: man man
+#14	whatis: one-line info about a command. Ex: whatis whatis
+#15	history: ex commands listed here
+#16	pwd: print working directory
+#17	mkdir: creates a directory, rmdir: removes a directory, cd: changes current directory
+#18	ls: lists a directory's contents, -l: long list, -t: time order, -tr: reverse time order, -f: classify, -h: human-readable, -a: all files, -s:size order
+#19	globs: ls a* returns files/directories starting with "a"(replaces any sequence), ls a? returns ab but not abc(replaces a single character)
+#20	less: output is paged. spacebar: next page, b: backvards, q: quit, /word: find next occurance of word, ?word: finds previous occurance of word
+#21	touch: creates a new blank file. If you touch an existing file, it changes its modification time.
+#22	rm: removes a file. -r: recursive deletion, -i: asks confirmation before deleting, -f: overrides permissions, force deletes.
+#23	mv: moves a file. You can use it to rename a file, as well as cut&paste type of action. If you mv a directory, it is the same as -r.
+#24	cp: copies a file. You should use -r to copy a directory recursively.
+#25	ln: creates a hard link of a file. -s creates a symbolic link.
+#26	locate: searches files whose names contain a search string.
+#27	find: finds files using various attributes. First parameter is the starting directory, after the name, ayı gibi expression gelebilir.
+#28	grep: finds files&lines of that files that contains a certain text.
+#29	linux is a multiuser OS. id command lists users and their uid. 1000, means root privilages.
+#30	whoami returns current username. who lists currently logged in users. w lists all users and their current active jobs.
+#31	file permissions can be seen with ls -l. first 3 is owner rights, middle 3 is group, last 3 is world. first byte is write, then write, then execute. rwx.
+#32	chmod: changes file permissions. Best way to do is entering an octal-three digit number. First is owner, then group, then world.
+#33	umask: gives an octal output showing which permissions are filtred. Ex. 0002: out of the group, users cannot write to this file. The very first digit: 4-Process runs with uid, 2-gid, 1-sticky
+#34	chown: change owner of a file. chgrp: change group of a file.
+#35	su: switch user. su a switches a in current directory. su - a changes user and directory. exit ends the user switch session. Only su switches to root.
+#36	sudo: switch user, then do a job. no parameters given, execute as root.
+#37	To suppress error messages, output it to /dev/null. erroneous command 2> /dev/null.
+#38	To take input from a file, use <. Command < file.
+#39	| is a pipeline, output of first command is directed to the second as input file. ls -l /bin /usr/bin | sort | uniq | less
+#40	head: Display first 10 lines, tail: Display last 10 lines.
+#41	tee: copies output to a file, and redirects it to output. ls /usr/bin | tee list.txt | grep zip
+#42	ps: displays current processes associated with this terminal session. ps -x: Lists all processes. STAT-> N: low prio, D: IO wait, R: Running, S: Sleeping, T: Stopped, Z: Zombie, <: High prio
+#43	ps -ux: Current users all processes. ps -aux: All users all processes.
+#44	vmstat: Virtual memory statistics. vmstat N M, every N seconds, M times. top: updates continuously.
+#45	If you append an & at the end of the command, it runs in the background, you can continue other operations.
+#46	kill: sends a kill signal to a process. killall: sends a kill signal to a process group.
+#47	gedit(GNOME), kedit(KDE), nano, emacs, vi/vim are the available text editors. vi is the POSIX standard editor. vim: vi improved.
+#48	The file /etc/fstab includes devices to be mounted at the boot time.(partions)
+#49	To mount a file system: mount <options> <device> <mountPoint>. To unmount: umount <mountPoint>
+#50	/dev/fd: for floppies, /dev/hd: for IDE disks, /dev/lp: for printers, /dev/sd: for SCSI disks, /dev/sr: for optical drives, /dev/sd<N>: for disks, /dev/sd<N><M>: for Nth disks Mth partition
+#51	fdisk(UNIX), parted/gparted(GNU): Examine&Modify partitions.
+#52	mkfs: Make filesystem. fsck: File system check. fdformat: Floppy disk format.
+#53	FS Types-> iso9660: CD-ROM, msdos: MS-DOS, vfat: Windows FAT, ntfs: Windows NTFS, UFS: Unix file system, ext2: Linux fs, ext3: ext2+Journaling, ext4: ext3+Larger files, hfsplus: Apple
+#54	md5sum, sha1sum, sha256sum: cryptographic hash functions.
+#55	tar: "tape archive", c: create archive, x: extract archive, r: append to archive, t: list contents
+#56	rsync: remote file/directory synchronization.
+#57	gzip/zip/unzip: archiving tools. WinZip compatible.
+#58	ifconfig: Interface configuration. All interfaces returned.
+#59	route -n: New route is added to the routing table.
+#60	ping: ICMP packet.
+#61	traceroute: Sequence of routers that have been used to reach a host.
+#62	host command can be used to do DNS configuration.
+#63	gcc: GNU C Compiler. -o outputFileName.
+#64	You need to generate .o(object) files from .c files, then link them to create a program if you have more than one C files.
+#65	Makefile simple format is "Target: Dependencies Recipe" Ex: hello_linux: hello_linux.o greeter.o \n\t gcc -g -o hello_linux hello_linux.o greeter.o
+#66	If nothing is new, make does not work. If you still want it work, just touch a file, then it will make.
+#67	In a makefile, CC=C compiler variable, CFLAGS=Compiler flags variable
+#68	Logical omission of commands are possible. For example: cmd1 && cmd2 means cmd2 is going to be done only if the cmd1 is successful.
+#69	You can use either "cd ~" or "cd" to switch to your home directory.
+#70	ctrl+r can be used to search from previous commands that you've entered.
+#71	You can use ctrl+s to stop to terminal, after you need to use ctrl+q to continue.
+#72	ctrl+a makes your cursor to go to the start of the line, ctrl+e makes it to go to the end.
+#73	You can use aliases to avoid typo mistakes. Ex: If you type gerp instead of grep all the time, use "alias gerp = grep". Gerp will work as grep now.
+#74	If a script needs a "y" response for confirmation, you can use "yes | that script". yes repeatedly presses y.
+#75	apropos can be used to search between appropriate commands. Ex: You want to list directory contents but forgot the command. use "apropos "list directory contents""
+#76	To re-execute a command in "history" try "!$(command history number)".
+#77	You can use shutdown command to make computer shut down in a specific time. Ex. shutdown +15: in 15 minutes, shutdown 21:00: At nine pm.
+#78	You can create a directory tree in a single command. Ex: mkdir -p new_folder/{folder_1,folder_2,folder_3,folder_4,folder_5}
+#79	Alt+backspace deletes the previous word. Alt+f skips to the next space. Alt+b skips to the previous space.
+#80	Ctrl+u cuts all text up to the cursor, ctrl+k cuts all text after the cursor to the \n.
+#81	use ulimit to see/change hard/soft limits within a process, change it.
+#82	use prlimit to see/change hard/soft limits then start a process with these parameters.
+#83	If you want to change a hard/soft limit permanently, edit /etc/security/limits.conf
+#84	malloc(3) dynamically allocates memory from process heap. But you must check for failure.
+#85 	free should be used on malloc-returned objects. Best to equal it to NULL after free.
+#86	calloc(3) API dynamically allocates memory from process heap and fill it with zeroes.
+#87	void* realloc(void*,size_t), frees a memory place and resizes, allocates at a new size.
+#88	mlock(2) can be used to lock a page of memory from paging. If your speed of execution matters, use it to decline swapping. See page 142 in Billimoria K.N. for correct usage.
+#89	mlockall(2) can be used to all pages in effect. Then use munlockall(2).
+#90	mprotect(2) can be used to change read-write-execute permissions on a specific memory page.
+#91	You can use alloca(3) instead of malloc(3) if you want to allocate from stack instead of heap. You don't need to free alloca-used spaces. You cannot check failure for alloca(3) and failures cost you a stack overflow.
+#92	Tip: Don't do uninitialized memory address. Ex: int x; if(x) blah blah;
+#93	stat command on a file gives you detailed info about file, including access rights and creation/modification times.
+#94	Time to time, you can see an s instead of x in owner execution rights. This denotes setuid binary file. Whenever a setuid program is executed, its effective uid changes to the original owner. For passwd, see ls -l $(which passwd). When you execute, owner will be root.
+#95	getuid(2) returns RUID, geteuid(2) returns EUID, getgid(2) returns RGID, getegid(2) returns EGID.
+#96	What exactly is sudo? sudo is a program that have setuid privilages, belonging to root that takes another command as parameter. Check ls -l $(which sudo).
+#97	exec(2) executes a process given as parameter. The new process takes the old one's PID, meaning the old one is killed.
+#98	execl(3) executes a process given as a parameter. After than the process, you can pass more parameters to be passed to the new process.
+#99	execlp(3) is the same as execl but it requires the path to the new process.
+#100	fork(2) creates an identical copy of the current process.
+#101	fork(3) returns new process' PID on parent and 0 on child process on success. Returns -1 on parent for success.
+#102	With fork(3) in a switch-case statement, you may achieve two different behavior in the same process.
+#103	Be careful to not waste any resources on forked processes, remember that they can be in a race condition, deadlocks, etc. if not taken care of carefully. Open files, allocated memories should be taken care of.
+#104	wait(2) API can be used to wait until childeren processes of the parent die. There are associated macros with wait. -----WIFEXITED==true->Child died naturally, WEXITSTATUS-> exit status of child. Else abnormal termination. -----WIFSIGNALED==true->Child died upon a signal, WTERMSIGNAL->the signal that killed child. Else non-signal end. -----WCOREDUMP==true if child caused a core dump. -----WIFSTOPPED==child is stopped with a signal. WSTOPSIG->the signal that cause stop. -----WIFCONTINUED==true child got a SIGCONT signal to continue after stop.
+#105	waitpid(2) allows you to wait a specific child since if you use wait, the earliest return will unblock your process. On options, 0 is no specific option, WNOHANG: No living childeren, return. WUNTRACED: Unblock when the childeren stops or ends. WCONTINUED: Also unblock when a child continues with SIGCONT signal.
+#106	waitid(2) is another wait(2) alternative. idtype parameters are; P_PID: wait a specific PID. P_PGID: wait a specific process group id. P_ALL: wait upon any child.
+#107	If parent of a child process dies before it, the fork will be called an orphan, changing its predecesor process id to 1 for init or systemd, the root of all processes. Orphaned processes do not cause any important harm other than they are headless. When they end, they do not possess any hard danger to the system.
+#108	If a process forks, and does not wait upon its child: When the child returns, kernel is M-A-D. Since no process to signal, it takes over the clean-up the child process; but it is not aware of inside of the fork. So, kernel performs a hard clean-up. FREES ALL MEMORY, FLUSHES AND CLOSES ALL FILES. HOWEVER, IT DOES NOT CLEAN THE ENTRY POINT TO THE KERNEL PROCESS ENTRY SINCE THE PARENT CAN WAIT CHILD'S RETURN IN FUTURE. Thus, child has a perfect PID, it seems as a process, but it is not. Kernel process table is polluted. This processes are called ZOMBIEs. You can see zombies at ps -l. They are denoted with "z".
+#109	Rules of fork #1: After a successful fork, both processes continue from the fork instruction.
+#110	Rules of fork #2: To determine child/parent, use the fork return value.
+#111	Rules of fork #3: After a successful fork, parallel execution happens.
+#112	Rules of fork #4: Data are copied across forks, not shared.
+#113	Rules of fork #5: After fork, indeterminable execution order.
+#114	Rules of fork #6: Open files are loosely shared across forks.
+#115	Rules of fork #7: The parent process MUST wait upon termination of childeren.
+#116	A process can trap or subscribe to a signal. When it occurs it will be notified by the kernel.
+#117	kill -l shows possible signals to be sent to a process.
+#118	Standard/UNIX signals are: SIGHUP->Hang up(Default: Terminate). SIGINT->Interrupt from keyboard(^3)(Default: Terminate). SIGQUIT->Quit from keyboard(^\)(Default: Terminate and core dump). SIGILL->Illegal instruction(Default: Terminate and core dump). SIGABRT->Abort(Default: Terminate and core dump). SIGFPE->Floating point exception(Default: Terminate and core dump). SIGKILL->Hard kill(Default: Terminate). SIGSEGV->Segmentation fault(Default: Terminate and core dump). SIGPIPE->Broken pipe(Default: Terminate). SIGALARM->Timer alarm(Default: Terminate). SIGTERM->Soft kill(Default: Terminate). SIGUSR1->User defined(Default: Terminate). SIGUSR2->User defined(Default: Terminate). SIGCHLD->Child stopped or terminated(Default: Ignore). SIGCONT->Continue if stopped(Default: Continue). SIGSTOP->Stops(Default: Stops). SIGISTP->Keyboard stop(^Z)(Default: Stops). SIGTTIN->Terminal input(Default: Stops). SIGTTOU->Terminal output(Default: Stops).
+#119	Use sigaction(2) to trap signals.
+#120	Use sigprocmask(2) to mask any recieved signals.
+#121	alarm(2) allows us to set up a simple alarm clock that signals us when ends. However, its resolution is in seconds, not cool!
+#122	setitimer(2)/getitimer(2) are used to generate interval timers. Resolution is microseconds.
+#123	To get time in an easy manner, use time(2), localtime(3), strftime(3).
+#124	To get time with a resolution of nanoseconds, use clock_gettime(2)
+#125	A thread is an independent execution(flow) path within a process. Everything except the stack is shared across pthread and its creator program. Threads are much faster than forks since forks use copy on write while threads just share.
+#126 	exit(3) library API is used to end a process. To end a thread, use pthread_exit(3).
+#127	The library of pthread includes mutexes for critical section protection in multi-threaded or multi-processed code.
+#128	Bash file test operators are: -e: File exists, -f: is a regular file, -s: file size is not zero, -d: file is a directory, -b: file is a block device, -c: file is a character device, -p: file is a pipe, -L: file is a symbolic link, -S: file is a socket, -t: file is associated with a terminal device, -r,-w,-x: file has read,write,execute permissions, -g,-u: file has set-group-id, set-user-id flag set, -k: sticky bit check, -O: owner is user, -G: group is user's, -N: modified since last read, f1 -nt,-ot f2: f1 newer, older than f2, f1 -ef f2: f1 and f2 hard links to same file.
