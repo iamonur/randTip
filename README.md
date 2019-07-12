@@ -1,4 +1,4 @@
-#randTip
+- #randTip
 randTip is a bash script that prints a random tip from a file called tips. Suggested way of using it is to append the script to the ~/.bashrc file. In that way, a random tip for every terminal session will be displayed. Currently, randTip includes this categories:
 - Linux system programming
 - Linux for newbies(Like me)
