@@ -13,7 +13,10 @@ if [ "$choice" = "true" ]; then
 		echo "Already Installed."
 	else
 		echo "Installing..."
-		echo "bash $(pwd)/randTip.sh"  >> ~/.bashrc
+		mkdir /etc/randTip
+		cp randTip.sh /etc/randTip
+		cp tips /etc/randTip
+		echo "bash /etc/randTip/randTip.sh"  >> ~/.bashrc
 		touch installed
 		echo "Installed."
 	fi
